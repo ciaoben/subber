@@ -1,0 +1,84 @@
+
+
+$bgcolor: white;
+$color: lime;
+$foundation_blue:#008CBA;
+
+@mixin rotation($radius) {
+  -webkit-transform: rotate($radius);
+      -moz-transform: rotate($radius);
+       -ms-transform: rotate($radius);
+        -o-transform: rotate($radius);
+           transform: rotate($radius);
+           filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=1);
+}
+.button{
+  text-shadow: 1px 1px 2px black;
+  box-shadow: 0px 1px 2px black;
+}
+#wrong-film {
+  li {
+    width: 100%;
+    border: 1px solid $foundation_blue;
+  }
+  li:hover {
+    background-color: $foundation_blue;
+    color: white;
+    cursor: pointer;
+  }
+}
+body {
+background: rgb(84,84,84); /* Old browsers */
+background: -moz-radial-gradient(center, ellipse cover,  rgba(84,84,84,1) 0%, rgba(0,0,0,1) 100%); /* FF3.6+ */
+background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,rgba(84,84,84,1)), color-stop(100%,rgba(0,0,0,1))); /* Chrome,Safari4+ */
+background: -webkit-radial-gradient(center, ellipse cover,  rgba(84,84,84,1) 0%,rgba(0,0,0,1) 100%); /* Chrome10+,Safari5.1+ */
+background: -o-radial-gradient(center, ellipse cover,  rgba(84,84,84,1) 0%,rgba(0,0,0,1) 100%); /* Opera 12+ */
+background: -ms-radial-gradient(center, ellipse cover,  rgba(84,84,84,1) 0%,rgba(0,0,0,1) 100%); /* IE10+ */
+background: radial-gradient(ellipse at center,  rgba(84,84,84,1) 0%,rgba(0,0,0,1) 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#545454', endColorstr='#000000',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+;
+}
+#container-buttons {
+  text-align: center;
+}
+
+.center {
+  position: relative;
+  margin: 0 auto;
+  height: 500px;
+  width:60%;
+}
+#search_field {
+  i {
+    color: $foundation_blue;
+    font-size: 14rem;
+  }
+}
+
+#search_field {
+
+  width: 100%;
+  height: 300px;
+  border:2px dotted #0B85A1;
+  color:#92AAB0;
+  text-align:center;
+  vertical-align:middle;
+  padding:10px 10px 10 10px;
+  margin-bottom:10px;
+
+  #caption{
+    
+    font-family: 'Nothing You Could Do', cursive;
+    color: $foundation_blue;
+    font-size:4rem;
+    position: relative;
+    top: 100px;
+     @include rotation(18deg);
+  }
+  #caption-film {
+      font-family: 'Nothing You Could Do', cursive;
+      color: $foundation_blue;
+      font-size:2rem;
+      position: relative;
+    }
+}

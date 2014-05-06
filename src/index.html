@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href="../libs/fontawesome/css/font-awesome.css" media="screen" rel="stylesheet" type="text/css"/>
+  <link href="../libs/foundation/css/foundation.min.css" media="screen" rel="stylesheet" type="text/css"/>
+  <link href="../libs/select2/select2.css" media="screen" rel="stylesheet" type="text/css"/>
+  <link href="../libs/DataTables/media/css/jquery.dataTables.css" media="screen" rel="stylesheet" type="text/css"/>
+  <link href="../libs/animate.css/animate.css" media="screen" rel="stylesheet" type="text/css"/>
+  <link href='http://fonts.googleapis.com/css?family=Nothing+You+Could+Do' rel='stylesheet' type='text/css'>
+  <link href="../dist/css/pretty.css" media="screen, projection" rel="stylesheet" type="text/css"/>
+  <script src="../libs/jquery/dist/jquery.js"></script>
+  <script src="../libs/DataTables/media/js/jquery.dataTables.js"></script>
+  <script src="../libs/select2/select2.js"></script>
+  <script src="../libs/jquery-xmlrpc/jquery.xmlrpc.js"></script>
+  <script src="../libs/foundation/js/foundation.min.js"></script>
+  <script src="../libs/foundation/js/foundation/foundation.reveal.js"></script>
+  <script src="js/functions.js"></script>
+  <script src="js/Long.min.js"></script>
+  <script src="js/jquery.drag.custom.js"></script>
+  <script src="../libs/spin.js/spin.js"></script>
+  
+</head>
+<body>
+  <input id="token" type="hidden" value="">
+  <div class="row">
+    <div class="columns medium-6 medium-offset-3">
+      <img src="http://placehold.it/500x100">
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="columns medium-12">
+      <div class="panel">
+        <div class="content-home" id="co">
+          <div id="search_field">
+            <p id="caption">Drag your file here</p>
+          </div>
+
+          <input id="file-size" type="hidden" value="">
+          <input id="file-hash" type="hidden" value="">
+          <select id="select-language" multiple style="width: 100%;">
+            <option value="ita">italian</option>
+            <option value="eng">english</option>
+            <option value="spa">spanish</option>
+          </select>
+        </div>
+      </div>
+      <div class="panel" style="display: none;">
+        <div class="content-result">
+          <div class="row">
+            <div class="columns medium-4">
+              <img id="film-img" src="">
+            </div>
+            <div class="columns medium-8">
+              <h1 id="film-title"></h1>
+              <a href="#" data-reveal-id="wrong-film"> Wrong film?</a>
+              <p id="film-plot"></p>
+              <table id="example" class="display" cellspacing="0" width="100%">
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="columns medium-12" id="container-buttons">
+      <a id="quattro" class="button">Find Subs</a>
+      <a id="indietro" class="button">Back</a>
+    </div>
+  </div>
+  
+  <div id="wrong-film" class="reveal-modal" data-reveal>
+    <ul class="small-block-grid-3">
+      <li id="wrong-1"></li>
+      <li id="wrong-2"></li>
+      <li id="wrong-3"></li>
+      <li id="wrong-4"></li>
+    </ul>
+  </div>
+  <div class="hide">
+
+    <p id="film-plot
+    "></p>
+    <div class="row">
+      <div class="columns small-12">
+
+      </div>
+    </div>
+
+
+
+    <a id="uno" class="button">Verifica Sessione</a>
+    <a id="due" class="button">Cerca film</a>
+    <a id="tre" class="button">Parsa immagine</a>
+
+  </div>
+
+
+
+
+
+  <script type="text/javascript">
+    $(document).foundation();
+    $("#select-language").select2({placeholder: "Select your preferreds languages"});
+    $("#wrong-film li").on("click", function(){
+      console.log(this);
+      var imdbid = $(this).find("input").val();
+      var token = $("#token").val();
+      search_imdb(token, '',imdbid);
+      $('#wrong-film').foundation('reveal', 'close');
+    });
+    var opts = {
+                lines: 13, // The number of lines to draw
+                length: 20, // The length of each line
+                width: 10, // The line thickness
+                radius: 30, // The radius of the inner circle
+                corners: 1, // Corner roundness (0..1)
+                rotate: 0, // The rotation offset
+                direction: 1, // 1: clockwise, -1: counterclockwise
+                color: '#008CBA', // #rgb or #rrggbb or array of colors
+                speed: 1, // Rounds per second
+                trail: 60, // Afterglow percentage
+                shadow: false, // Whether to render a shadow
+                hwaccel: false, // Whether to use hardware acceleration
+                className: 'spinner', // The CSS class to assign to the spinner
+                zIndex: 2e9, // The z-index (defaults to 2000000000)
+                top: '50%', // Top position relative to parent
+                left: '50%' // Left position relative to parent
+              };
+    var target = document.getElementById('co');
+    var spinner = new Spinner(opts);
+
+
+    $("#quattro").on('click', function(){
+      spinner.spin(target);
+      $.xmlrpc({
+        url: 'http://api.opensubtitles.org/xml-rpc',
+        methodName: 'LogIn',
+        params: ['ciaoben', 'bobthesponge','en','subber'],
+        success: function(response, status, jqXHR) {
+          console.log(response);
+          verify_session(response[0].token);
+          $('#token').val(response[0].token);
+
+
+          var array = new Array();
+          array["sublanguageid"] = $('#select-language').select2('val');
+          array["moviehash"] =$('#file-hash').val();
+          array["moviebytesize"] =$('#file-size').val();
+          sendd_xml(response[0].token,array['sublanguageid'],array['moviehash'],array['moviebytesize']);
+
+        },
+        error: function(jqXHR, status, error) { alert('errore');}
+      });
+    });
+
+    $("#indietro").on('click', function(){
+     location.reload();
+   });
+           </script>
+         </body>

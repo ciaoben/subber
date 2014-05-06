@@ -1,0 +1,14 @@
+{
+  "name": "subber",
+  "version": "0.0.1",
+  "dependencies": {
+    "jquery": "latest",
+    "foundation": "latest",
+    "fontawesome": "latest",
+    "jquery-xmlrpc": "latest",
+    "DataTables": "latest"
+  },
+  "resolutions": {
+    "jquery": ">=1.7.0"
+  }
+}

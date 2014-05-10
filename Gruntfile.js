@@ -20,7 +20,7 @@ module.exports = function(grunt) {
       // only run less and cssmin
       stylesheets: {
         files: ['src/**/*.css', 'src/**/*.scss'],
-        tasks: ['sass', '']
+        tasks: ['sass']
       },
 
       // for scripts, run jshint and uglify

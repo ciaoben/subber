@@ -54,6 +54,15 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#545454', end
     font-size: 14rem;
   }
 }
+.panel#div1, .panel#div2, .panel#div3, .panel#div4, .panel#div5{
+  p{
+    font-family: 'Nothing You Could Do', cursive;
+    color: $foundation_blue;
+    font-size:6rem;
+    text-align: center;
+  }
+    
+}
 
 #search_field {
 

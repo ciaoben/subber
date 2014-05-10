@@ -9,6 +9,6 @@
     "DataTables": "latest"
   },
   "resolutions": {
-    "jquery": ">=1.7.0"
+    "jquery": "~1.10.2"
   }
 }

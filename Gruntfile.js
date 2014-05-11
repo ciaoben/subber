@@ -1,7 +1,7 @@
 // Gruntfile.js
 
 // our wrapper function (required by grunt and its plugins)
-// all configuration goes inside this function
+// all configuration goes inside this function////
 module.exports = function(grunt) {
 
   // ===========================================================================

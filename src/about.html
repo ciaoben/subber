@@ -8,7 +8,7 @@
   <link href="../libs/animate.css/animate.css" media="screen" rel="stylesheet" type="text/css"/>
   <link href='http://fonts.googleapis.com/css?family=Nothing+You+Could+Do' rel='stylesheet' type='text/css'>
   <link href="../dist/css/pretty.css" media="screen, projection" rel="stylesheet" type="text/css"/>
-  <script src="../libs/jquery/jquery.js"></script>
+  <script src="../libs/jquery/dist/jquery.js"></script>
   <script src="../libs/DataTables/media/js/jquery.dataTables.js"></script>
   <script src="../libs/select2/select2.js"></script>
   <script src="../libs/jquery-xmlrpc/jquery.xmlrpc.js"></script>
@@ -22,83 +22,122 @@
   <script src="../libs/jquery-waypoints/waypoints.js"></script>
 </head>
 <body>
-<div id="bg" style="position:fixed; width:100%; height:;"><img src="http://themenectar.com/demo/salient-frostwave/wp-content/uploads/2013/03/mountains-preview2.jpg"></div>
+
+  <div id="bg" style="position:fixed; width:100%; height:;"><img src="http://www.femaleworld.it/wp-content/uploads/2014/04/Cinepresa.jpg"></div>
   <div class="row">
     <div class="columns small-12">
-      <div id="div1" class="panel" style="visibility:hidden; position:absolute; top:50px; display:block; width: 100%; height: 300px;">
-        <p>How it works</p>
+      <div class="container-buttons">
+        <a id="howitworks" class="button">How it works</a>
+        <a id="about" class="button">About me</a>
       </div>
     </div>
   </div>
-  <div class="row">
-    <div class="columns small-12">
-      <div id="div2" class="panel" style="visibility:hidden; position:absolute; top:350px; display:block; width: 100%; height: 300px;">
-       <p>Choose a video file</p>
+  <div class="hiw">
+    <div class="row">
+      <div class="columns small-12">
+
+        <div id="div1" class="panel" style="visibility:hidden; position:absolute; top:50px; display:block; width: 100%; height: 300px;">
+          <p>How it works</p>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="row">
+    <div class="row">
+      <div class="columns small-12">
+        <div id="div2" class="panel" style="visibility:hidden; position:absolute; top:350px; display:block; width: 100%; height: 300px;">
+         <p>Choose a video file</p>
+       </div>
+     </div>
+   </div>
+   <div class="row">
     <div class="columns small-12">
       <div id="div3" class="panel" style="visibility:hidden; position:absolute; top:650px; display:block; width: 100%; height: 300px;">
-       <p>Drag in to the browser</p>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="columns small-12">
-      <div id="div4" class="panel" style="visibility:hidden; position:absolute; top:950px; display:block; width: 100%; height: 300px;">
-       <p>Choose your subs files</p>
-      </div>
-    </div>
-  </div>
+       <p>Drag it into the browser</p>
+     </div>
+   </div>
+ </div>
+ <div class="row">
+  <div class="columns small-12">
+    <div id="div4" class="panel" style="visibility:hidden; position:absolute; top:950px; display:block; width: 100%; height: 300px;">
+     <p>Choose your subs files</p>
+   </div>
+ </div>
+</div>
 <div class="row">
-    <div class="columns small-12">
-      <div id="div5" class="panel" style="visibility:hidden; position:absolute; top:1250px; display:block; width: 100%; height: 300px;">
-       <p>enjoy it</p>
-      </div>
-    </div>
-  </div>
+  <div class="columns small-12">
+    <div id="div5" class="panel" style="visibility:hidden; position:absolute; top:1250px; display:block; width: 100%; height: 300px;">
+     <p>enjoy it</p>
+   </div>
+ </div>
+</div>
+</div>
+<div class="aboutme" style="visibility:hidden; ">
+  <div class="row">
+  <div class="columns small-12">
+    <div id="div88" class="panel" style=" position:absolute;  display:block; width: 100%; height: 300px;">
+     <p>enjoy it</p>
+   </div>
+ </div>
+</div>
+</div>
+
 
 
 <!-- <div data-0=" height: 20px; top: 200px; position: absolute;" data-top-top="height:500px;" data-300="height:190px;" style="position:absolute; top:200px; display:block; width: 100%; height: 300px;background-color:yellow; "></div>
-<div data-0=" height: 20px; top: 220px; position: absolute;" data-900="height:20px;" data-85="height:200px;" style="position:absolute; top:200px; display:block; width: 100%; height: 300px;background-color:orange; "></div> -->
+  <div data-0=" height: 20px; top: 220px; position: absolute;" data-900="height:20px;" data-85="height:200px;" style="position:absolute; top:200px; display:block; width: 100%; height: 300px;background-color:orange; "></div> -->
   <script>
-  direction = 'down';
-  $('body').waypoint(function(direction) {
-    $('#div1').css('visibility', 'visible').addClass('animated slideInLeft');
+
+    direction = 'down';
+    $('body').waypoint(function(direction) {
+      $('#div1').css('visibility', 'visible').addClass('animated slideInLeft');
+
     });
-  $('#div1').waypoint(function(direction) {
-  $('#div2').css('visibility', 'visible').addClass('animated slideInRight');
-  }, {
-    offset: function() {
-      return -($(this).height()/9);
+    $('#div1').waypoint(function(direction) {
+      $('#div2').css('visibility', 'visible').addClass('animated slideInRight');
+    }, {
+      offset: function() {
+        return -($(this).height()/9);
+      }
+    });
+    $('#div2').waypoint(function(direction) {
+      $('#div3').css('visibility', 'visible').addClass('animated slideInLeft');
+    });
+    $('#div3').waypoint(function(direction) {
+      $('#div4').css('visibility', 'visible').addClass('animated slideInRight');
+    });
+    $('#div4').waypoint(function(direction) {
+      $('#div5').css('visibility', 'visible').addClass('animated slideInRight');
+    }, {
+      offset: function() {
+        return ($(this).height()/2);
+      }
+    });
+
+    $(window).bind('scroll',function(e){
+      parallaxScroll();
+    });
+    function parallaxScroll(){
+      var scrolled = $(window).scrollTop();
+      $('#bg').css('top',(0-(scrolled*.07))+'px');
     }
-  });
-  $('#div2').waypoint(function(direction) {
-    $('#div3').css('visibility', 'visible').addClass('animated slideInLeft');
+    $('#about').on('click', function(){
+      $('.hiw').addClass('animated fadeOutDown');
+      $('.hiw').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+        $('.aboutme').css('visibility', 'visible').addClass('animated fadeInDown');;
+      });
     });
-  $('#div3').waypoint(function(direction) {
-    $('#div4').css('visibility', 'visible').addClass('animated slideInRight');
+    $('#howitworks').on('click', function(){
+      $('.aboutme').addClass('animated fadeOutDown');
+      $('.aboutme').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+        $('.hiw').css('visibility', 'visible').addClass('animated fadeInDown');;
+      });
     });
-  $('#div4').waypoint(function(direction) {
-    $('#div5').css('visibility', 'visible').addClass('animated slideInRight');
-    });
- 
-  $(window).bind('scroll',function(e){
-    parallaxScroll();
-  });
-  function parallaxScroll(){
-    var scrolled = $(window).scrollTop();
-    $('#bg').css('top',(0-(scrolled*.20))+'px');
-}
+    
 
 
 
 
- 
 
-
-    skrollr.init({});
+    $('body').css('height', '3000px');
   </script>
 </body>
 </html>
